@@ -8,6 +8,7 @@ game.resources = [
          {name: "player1-spritesheet", type:"image", src:"data/img/player1-spritesheet.png"},
          {name: "solid-tile", type:"image", src: "data/img/solid-tile.png"},
          {name: "sky", type:"image", src: "data/img/sky.png"},
+         {name: "lava", type:"image", src: "data/img/lava.jpg"},
 	/* Atlases 
 	 * @example
 	 * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},
@@ -19,12 +20,14 @@ game.resources = [
 	 * {name: "example01", type: "tmx", src: "data/map/example01.json"},
  	 */
          {name:"level01", type: "tmx", src:"data/map/level01.tmx"},
-         {name:"level02", type: "tmx", src:"data/map/level02.tmx"}
+         {name:"level02", type: "tmx", src:"data/map/level02.tmx"},
+         {name:"level03", type: "tmx", src:"data/map/level03.tmx"},
 
 	/* Background music. 
 	 * @example
 	 * {name: "example_bgm", type: "audio", src: "data/bgm/", channel : 1},
-	 */	
+	 */
+         {name:"vicente", type: "audio", src:"data/bgm/", channel : 1}
 
 	/* Sound effects. 
 	 * @example

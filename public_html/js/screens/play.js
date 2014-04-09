@@ -9,6 +9,9 @@ game.PlayScreen = me.ScreenObject.extend({
                 me.levelDirector.loadLevel("level01");
                 
                 this.resetPlayer();
+                //Add Music to this game
+                me.audio.play("vicente");
+                
                 
                 var player =new game.PlayerEntity(0, 420, {});
                 me.game.add(player, this.z);
@@ -29,6 +32,6 @@ game.PlayScreen = me.ScreenObject.extend({
                 
         resetPlayer: function() {
                 var player = new game.PlayerEntity(0, 420, {});
-                me.game.add(player, 3);
+                me.game.add(player, 4);
         }        
 });
