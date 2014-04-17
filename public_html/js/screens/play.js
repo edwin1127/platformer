@@ -13,8 +13,7 @@ game.PlayScreen = me.ScreenObject.extend({
                 me.audio.play("vicente");
                 
                 
-                var player =new game.PlayerEntity(0, 420, {});
-                me.game.add(player, this.z);
+                this.resetPlayer(0, 420);
 
 		// add our HUD to the game world
 		this.HUD = new game.HUD.Container();
@@ -30,8 +29,9 @@ game.PlayScreen = me.ScreenObject.extend({
 		me.game.world.removeChild(this.HUD);
 	},
                 
-        resetPlayer: function() {
-                var player = new game.PlayerEntity(0, 420, {});
-                me.game.add(player, 4);
-        }        
+        resetPlayer: function(x, y) {
+                var player = me.pool.pull("player", x, y, {});
+                me.game.world.addChild(player, 3);
+         }
+        
 });
