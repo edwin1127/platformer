@@ -8,7 +8,6 @@ game.PlayScreen = me.ScreenObject.extend({
                 
                 me.levelDirector.loadLevel("level01");
                 
-                this.resetPlayer();
                 //Add Music to this game
                 me.audio.play("vicente");
                 
@@ -31,7 +30,7 @@ game.PlayScreen = me.ScreenObject.extend({
                 
         resetPlayer: function(x, y) {
                 var player = me.pool.pull("player", x, y, {});
-                me.game.world.addChild(player, 3);
+                me.game.world.addChild(player, 5);
          }
         
 });

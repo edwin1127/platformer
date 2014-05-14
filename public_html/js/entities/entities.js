@@ -1,16 +1,20 @@
-game.PlayerEntity = me.ObjectEntity.extend({
+    game.PlayerEntity = me.ObjectEntity.extend({
     init: function(x, y, settings) {
         settings.image = "player1-spritesheet";
         settings.spritewidth ="72";
-        settings.spriteheight ="97";
+        settings.spriteheight ="96";
         settings.width = 72;
-        settings.height = 97;
+        settings.height = 96;
         this.parent(x, y, settings);
         
         this.collidable = true;
         
         this.renderable.addAnimation("idle", [3]);
-        this.renderable.setCurrentAnimation("idle");
+        this.renderable.addAnimation("jump", [2]);
+        this.renderable.addAnimation("run", [4,5,6,7,8,9,10,11,12,13,14]);
+        this.renderable.addAnimation("duck", [1]);
+        
+        this.renderable.setCurrentAnimation("run");
         
         this.setVelocity(5, 20);
         
@@ -27,16 +31,21 @@ game.PlayerEntity = me.ObjectEntity.extend({
          else{
             this.vel.x =0;
         }
-        
-        
         if(me.input.isKeyPressed("jump")) {
-            this.vel.y -= this.accel.x * me.timer.tick;
-             this.vel.y =5;
+        if(!this.jumping && !this.falling) {
+            this.vel.y = -this.maxVel.y * me.timer.tick;
+            this.jumping = true;
         }
-       
+        
+            
+        }
+      
         var collision = me.game.world.collide(this);
         this.updateMovement();
         return true;
+        
+         var collision = this.collide();
+     return true;
  
    }  
   });
@@ -76,8 +85,12 @@ game.EnemyEntity = me.ObjectEntity.extend({
                 
                
        onCollision: function(){
-           this.collidable = false;
+           this.collidable = true;
+           var x = this.xSpawn;
+           var y = this.ySpawn;
            me.levelDirector.loadLevel(this.level);
            me.state.current().resetPlayer(x, y);
        }
    });
+   
+ 
